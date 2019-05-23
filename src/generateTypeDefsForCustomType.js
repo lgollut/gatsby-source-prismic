@@ -228,6 +228,10 @@ const fieldToType = (id, value, depth, context) => {
           }),
       }
 
+    case 'IntegrationFields':
+      enqueueTypePath([...depth, id], 'PrismicIntegrationFields')
+      return 'PrismicIntegrationFields'
+
     default:
       console.log(`UNPROCESSED FIELD for type "${value.type}"`, id)
       return null

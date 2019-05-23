@@ -105,6 +105,19 @@ const normalizeField = async (id, value, depth, context) => {
         context,
       )
 
+    case 'PrismicIntegrationFields':
+      const nodeId = createNodeId(`${doc.type} ${doc.id} ${id}`)
+      createNode({
+        ...value,
+        id: nodeId,
+        internal: {
+          type: pascalcase(`Prismic ${doc.type} ${id}`),
+          contentDigest: createContentDigest(value),
+        },
+      })
+
+      return value
+
     default:
       return value
   }

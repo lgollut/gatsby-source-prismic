@@ -120,3 +120,9 @@ interface PrismicDocument {
   # tags: [String]
   type: String
 }
+
+"Integration field with custom API"
+type PrismicIntegrationFields {
+  "The element ID"
+  id: String
+}
